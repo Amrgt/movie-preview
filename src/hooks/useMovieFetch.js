@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import API from "../API";
+import { persistedState } from "../helpers";
 
 const directorJob = "Director";
 
@@ -32,8 +33,20 @@ export const useMovieFetch = (movieId) => {
       }
     };
 
+    const sessionState = persistedState(movieId);
+    if (sessionState) {
+      setState(sessionState);
+      setLoading(false);
+      return;
+    }
+
     fetchData();
   }, [movieId]);
+
+  // Write to sessionStorage
+  useEffect(() => {
+    sessionStorage.setItem(movieId, JSON.stringify(state));
+  }, [movieId, state]);
 
   return { state, loading, error };
 };
