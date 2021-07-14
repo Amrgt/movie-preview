@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 // Components
 import Thumb from "../Thumb";
 // Config
@@ -40,5 +41,15 @@ const MovieInfo = ({ movie }) => (
     </Content>
   </Wrapper>
 );
+
+MovieInfo.propTypes = {
+  movie: PropTypes.shape({
+    poster_path: PropTypes.string,
+    title: PropTypes.string,
+    overview: PropTypes.string,
+    vote_average: PropTypes.number,
+    directors: PropTypes.array,
+  }),
+};
 
 export default MovieInfo;
