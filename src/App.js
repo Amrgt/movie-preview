@@ -6,25 +6,29 @@ import Header from "./components/Header";
 import Home from "./components/Home";
 import Movie from "./components/Movie";
 import NotFound from "./components/NotFound";
+// Context
+import UserProvider from "./context";
 
 // Styles
 import { GlobalStyle } from "./GlobalStyle";
 
 const App = () => (
   <Router>
-    <Header />
-    <Switch>
-      <Route path="/:movieId">
-        <Movie />
-      </Route>
-      <Route path="/">
-        <Home />
-      </Route>
-      <Route path="*">
-        <NotFound />
-      </Route>
-    </Switch>
-    <GlobalStyle />
+    <UserProvider>
+      <Header />
+      <Switch>
+        <Route path="/:movieId">
+          <Movie />
+        </Route>
+        <Route path="/">
+          <Home />
+        </Route>
+        <Route path="*">
+          <NotFound />
+        </Route>
+      </Switch>
+      <GlobalStyle />
+    </UserProvider>
   </Router>
 );
 
