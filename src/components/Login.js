@@ -13,7 +13,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
 
-  const [user, setUser] = useContext(Context);
+  const [setUser] = useContext(Context);
   const history = useHistory();
 
   const handleSubmit = async () => {
